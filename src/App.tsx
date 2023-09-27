@@ -1,32 +1,18 @@
-import axios from 'axios'
+import { InputCep } from './component/InputCep'
+import { ButtonCep } from './component/ButtonCep'
+import { CepInfo } from './component/CepInfo'
+
 import './App.css'
-import { useState } from 'react'
 
 function App() {
-
-  const [valorCep, setvalorCep] = useState<any>('')
-
-  function formularioCep(){
-    axios.get('https://viacep.com.br/ws/01001000/json/')
-  }
 
   return (
     <>
       <div className='cep--container'>
-        <h1>Digite seu Cep</h1>
-        <div className='cep--inputs'>
-          <input type="text" placeholder='Digite seu cep' value={valorCep} onChange={(e) => setvalorCep(e.target.value)}/>
-        </div>
-        <div className='cep--button' >
-          <button onClick={formularioCep}>Entrar</button>
-        </div>
+        <InputCep />
+        <ButtonCep />
       </div>
-      <div className='cep--info'>
-        <p className="cep--street"></p>
-        <p className="cep--neighborhood"></p>
-        <p className="cep--city"></p>
-        <p className="cep--postalcode"></p>
-      </div>
+      <CepInfo />
     </>
   )
 }
